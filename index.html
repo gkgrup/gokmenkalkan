@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Gökmen Kalkan | GK Grup</title>
 
 <style>
+
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap");
 
 :root{
@@ -40,9 +42,103 @@ a{
   text-decoration:none;
 }
 
+
+/* =========================
+   AÇILIŞ ANİMASYONU
+========================= */
+
+.preloader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#090909;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:preloaderOut 1s ease 1.8s forwards;
+  pointer-events:none;
+}
+
+.preloader-content{
+  text-align:center;
+  animation:logoReveal 1.2s ease forwards;
+}
+
+.preloader-logo{
+  font:500 85px/1 "Cormorant Garamond";
+  color:var(--g);
+  letter-spacing:5px;
+  opacity:0;
+  transform:translateY(15px);
+  animation:logoIn 1s ease .2s forwards;
+}
+
+.preloader-name{
+  margin-top:10px;
+  color:#fff;
+  font-size:9px;
+  letter-spacing:5px;
+  opacity:0;
+  transform:translateY(10px);
+  animation:nameIn .8s ease .65s forwards;
+}
+
+.preloader-line{
+  width:0;
+  height:1px;
+  background:var(--g);
+  margin:20px auto 0;
+  animation:lineIn .8s ease .9s forwards;
+}
+
+@keyframes logoIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes nameIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes lineIn{
+  to{
+    width:90px;
+  }
+}
+
+@keyframes logoReveal{
+  from{
+    transform:scale(.96);
+  }
+  to{
+    transform:scale(1);
+  }
+}
+
+@keyframes preloaderOut{
+  from{
+    opacity:1;
+    visibility:visible;
+  }
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
 header{
   position:fixed;
-  z-index:9;
+  z-index:100;
   top:0;
   width:100%;
   padding:20px 4%;
@@ -94,15 +190,22 @@ nav a:hover{
   color:#111;
 }
 
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
   min-height:100vh;
   display:flex;
   align-items:flex-end;
   padding:120px 4% 70px;
+
   background:
     linear-gradient(90deg,#0009,#0001),
     linear-gradient(0deg,#090908,transparent 50%),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85") center/cover;
+    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85")
+    center/cover;
 }
 
 .hero>div{
@@ -126,6 +229,11 @@ nav a:hover{
   font-size:13px;
   margin-bottom:28px;
 }
+
+
+/* =========================
+   FAALİYET ALANLARI
+========================= */
 
 .divisions{
   display:grid;
@@ -152,9 +260,11 @@ nav a:hover{
   content:"";
   position:absolute;
   inset:0;
+
   background:
     linear-gradient(0deg,#070706 3%,transparent 65%),
     var(--im) center/cover;
+
   opacity:.5;
   transition:.5s;
 }
@@ -192,10 +302,20 @@ nav a:hover{
   margin-top:20px;
 }
 
+
+/* =========================
+   GENEL SECTIONS
+========================= */
+
 .sec{
   padding:100px 4%;
   border-bottom:1px solid #ffffff0d;
 }
+
+
+/* =========================
+   HAKKIMIZDA
+========================= */
 
 .split{
   display:grid;
@@ -234,6 +354,11 @@ h3{
   max-width:550px;
 }
 
+
+/* =========================
+   DEĞERLER
+========================= */
+
 .values{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -261,6 +386,11 @@ h3{
   font-size:11px;
 }
 
+
+/* =========================
+   PORTFÖYLER
+========================= */
+
 .ph{
   display:flex;
   justify-content:space-between;
@@ -278,6 +408,7 @@ h3{
   background:#10100f;
   border:1px solid #b08a522e;
   transition:.3s;
+  overflow:hidden;
 }
 
 .project:hover{
@@ -311,10 +442,16 @@ h3{
   font-size:13px;
 }
 
+
+/* =========================
+   İLETİŞİM
+========================= */
+
 .contact{
   background:
     linear-gradient(90deg,#090908 15%,#090908aa),
-    url("https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=2200&q=80") center/cover;
+    url("https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=2200&q=80")
+    center/cover;
 }
 
 .cg{
@@ -343,6 +480,11 @@ footer{
   letter-spacing:1px;
 }
 
+
+/* =========================
+   TABLET
+========================= */
+
 @media(max-width:850px){
 
   nav{
@@ -367,7 +509,13 @@ footer{
   .splitimg{
     min-height:360px;
   }
+
 }
+
+
+/* =========================
+   TELEFON
+========================= */
 
 @media(max-width:520px){
 
@@ -394,32 +542,112 @@ footer{
   header{
     padding:16px 5%;
   }
+
+  .ph{
+    display:block;
+  }
+
+  .ph .btn{
+    margin-top:20px;
+  }
+
+  .preloader-logo{
+    font-size:70px;
+  }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     AÇILIŞ
+========================= -->
+
+<div class="preloader">
+
+  <div class="preloader-content">
+
+    <div class="preloader-logo">
+      GK
+    </div>
+
+    <div class="preloader-name">
+      GÖKMEN KALKAN
+    </div>
+
+    <div class="preloader-line"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-  <a class="logo" href="#">
+
+  <a class="logo" href="#anasayfa">
+
     GK
-    <small>GÖKMEN KALKAN</small>
+
+    <small>
+      GÖKMEN KALKAN
+    </small>
+
   </a>
 
+
   <nav>
-    <a href="#anasayfa">Ana Sayfa</a>
-    <a href="#hakkimizda">Hakkımızda</a>
-    <a href="#alanlar">Faaliyet Alanlarımız</a>
-    <a href="#portfoyler">Portföyler</a>
-    <a href="#iletisim">İletişim</a>
+
+    <a href="#anasayfa">
+      Ana Sayfa
+    </a>
+
+    <a href="#hakkimizda">
+      Hakkımızda
+    </a>
+
+    <a href="#alanlar">
+      Faaliyet Alanlarımız
+    </a>
+
+    <a href="#portfoyler">
+      Portföyler
+    </a>
+
+    <a href="#iletisim">
+      İletişim
+    </a>
+
   </nav>
 
-  <a class="btn" href="#iletisim">İletişime Geç</a>
+
+  <a class="btn" href="#iletisim">
+    İletişime Geç
+  </a>
+
 </header>
 
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero" id="anasayfa">
+
   <div>
-    <div class="k">GK GRUP</div>
+
+    <div class="k">
+      GK GRUP
+    </div>
 
     <h1>
       GÖKMEN<br>
@@ -432,70 +660,145 @@ footer{
       uzanan çok yönlü bir iş ekosistemi.
     </p>
 
-    <a class="btn" href="#alanlar">Keşfet →</a>
+    <a class="btn" href="#alanlar">
+      Keşfet →
+    </a>
+
   </div>
+
 </section>
 
+
+<!-- =========================
+     FAALİYET ALANLARI
+========================= -->
+
 <section class="divisions" id="alanlar">
+
 
   <a
     class="division"
     style="--im:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85')"
     href="#portfoyler"
   >
-    <span class="num">01</span>
-    <h2>CITYMAX</h2>
-    <span>Gayrimenkul & İnşaat</span>
-    <span class="btn">İncele →</span>
+
+    <span class="num">
+      01
+    </span>
+
+    <h2>
+      CITYMAX
+    </h2>
+
+    <span>
+      Gayrimenkul & İnşaat
+    </span>
+
+    <span class="btn">
+      İncele →
+    </span>
+
   </a>
+
 
   <a
     class="division"
     style="--im:url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=85')"
     href="#iletisim"
   >
-    <span class="num">02</span>
-    <h2>GARAJ AUTO</h2>
-    <span>Otomotiv</span>
-    <span class="btn">İncele →</span>
+
+    <span class="num">
+      02
+    </span>
+
+    <h2>
+      GARAJ AUTO
+    </h2>
+
+    <span>
+      Otomotiv
+    </span>
+
+    <span class="btn">
+      İncele →
+    </span>
+
   </a>
+
 
   <a
     class="division"
     style="--im:url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=85')"
     href="#portfoyler"
   >
-    <span class="num">03</span>
-    <h2>TRIGON INVEST</h2>
-    <span>Yatırım</span>
-    <span class="btn">İncele →</span>
+
+    <span class="num">
+      03
+    </span>
+
+    <h2>
+      TRIGON INVEST
+    </h2>
+
+    <span>
+      Yatırım
+    </span>
+
+    <span class="btn">
+      İncele →
+    </span>
+
   </a>
+
 
   <a
     class="division"
     style="--im:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85')"
     href="#iletisim"
   >
-    <span class="num">04</span>
-    <h2>SHOP</h2>
-    <span>E-Ticaret</span>
-    <span class="btn">İncele →</span>
+
+    <span class="num">
+      04
+    </span>
+
+    <h2>
+      SHOP
+    </h2>
+
+    <span>
+      E-Ticaret
+    </span>
+
+    <span class="btn">
+      İncele →
+    </span>
+
   </a>
 
+
 </section>
+
+
+<!-- =========================
+     HAKKIMIZDA
+========================= -->
 
 <section class="sec" id="hakkimizda">
 
   <div class="split">
+
 
     <div
       class="splitimg"
       style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=85')"
     ></div>
 
+
     <div class="copy">
 
-      <div class="ey">Hakkımızda</div>
+      <div class="ey">
+        Hakkımızda
+      </div>
 
       <h3>
         GÜVEN, DENEYİM VE GELECEK ODAKLI YAKLAŞIM.
@@ -510,69 +813,118 @@ footer{
 
       <br>
 
-      <a class="btn" href="#iletisim">Daha Fazla →</a>
+      <a class="btn" href="#iletisim">
+        Daha Fazla →
+      </a>
 
     </div>
+
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     DEĞERLER
+========================= -->
+
 <section class="sec">
 
-  <div class="ey" style="text-align:center">
+  <div
+    class="ey"
+    style="text-align:center"
+  >
     Neden GK Grup?
   </div>
+
 
   <h3 style="text-align:center">
     FARK YARATAN DEĞERLERİMİZ
   </h3>
 
+
   <div class="values">
 
+
     <div class="val">
-      <strong>GÜVEN</strong>
+
+      <strong>
+        GÜVEN
+      </strong>
+
       <p>
         Tüm süreçlerde şeffaflık ve güven ilkesiyle hareket ederiz.
       </p>
+
     </div>
 
+
     <div class="val">
-      <strong>DENEYİM</strong>
+
+      <strong>
+        DENEYİM
+      </strong>
+
       <p>
         Sektörlerimizi bilen, çözüm odaklı yaklaşımla ilerleriz.
       </p>
+
     </div>
 
+
     <div class="val">
-      <strong>KAZANÇ ODAKLI</strong>
+
+      <strong>
+        KAZANÇ ODAKLI
+      </strong>
+
       <p>
         Yatırımları büyüten ve değer yaratan stratejiler geliştiririz.
       </p>
+
     </div>
 
+
     <div class="val">
-      <strong>SÜRDÜRÜLEBİLİR</strong>
+
+      <strong>
+        SÜRDÜRÜLEBİLİR
+      </strong>
+
       <p>
         Bugünü değil, geleceği inşa eden adımlar atarız.
       </p>
+
     </div>
+
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     PORTFÖYLER
+========================= -->
+
 <section class="sec" id="portfoyler">
+
 
   <div class="ph">
 
     <div>
-      <div class="ey">Projeler</div>
+
+      <div class="ey">
+        Projeler
+      </div>
 
       <h3>
         GELECEĞE İZ BIRAKAN PROJELER
       </h3>
+
     </div>
+
 
     <a class="btn" href="#portfoyler">
       Tüm Portföyler →
@@ -580,13 +932,136 @@ footer{
 
   </div>
 
-  <div class="projects" id="projectGrid"></div>
+
+  <div class="projects">
+
+
+    <!-- EMLAK -->
+
+    <article class="project">
+
+      <img
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+        alt="EMLAK"
+      >
+
+      <div class="pb">
+
+        <h4>
+          EMLAK
+        </h4>
+
+        <p>
+          Düzce / Merkez
+        </p>
+
+        <div class="price">
+          1.250.000 TL
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- CITYMAX RESIDENCE -->
+
+    <article class="project">
+
+      <img
+        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
+        alt="CİTYMAX RESİDENCE"
+      >
+
+      <div class="pb">
+
+        <h4>
+          CİTYMAX RESİDENCE
+        </h4>
+
+        <p>
+          Düzce / Merkez
+        </p>
+
+        <div class="price">
+          Yakında
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- LÜKS KONUT -->
+
+    <article class="project">
+
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+        alt="LÜKS KONUT"
+      >
+
+      <div class="pb">
+
+        <h4>
+          LÜKS KONUT
+        </h4>
+
+        <p>
+          Düzce / Bolu
+        </p>
+
+        <div class="price">
+          Yakında
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- ARAZİ VE ARSA -->
+
+    <article class="project">
+
+      <img
+        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+        alt="ARAZİ VE ARSA"
+      >
+
+      <div class="pb">
+
+        <h4>
+          ARAZİ VE ARSA
+        </h4>
+
+        <p>
+          Düzce / İlçeler
+        </p>
+
+        <div class="price">
+          Yakında
+        </div>
+
+      </div>
+
+    </article>
+
+
+  </div>
 
 </section>
 
+
+<!-- =========================
+     İLETİŞİM
+========================= -->
+
 <section class="sec contact" id="iletisim">
 
+
   <div class="cg">
+
 
     <div>
 
@@ -594,117 +1069,96 @@ footer{
         İletişime Geçin
       </div>
 
+
       <h3>
         YATIRIM FIRSATLARI VE İŞ BİRLİKLERİ İÇİN
         BİZİMLE İLETİŞİME GEÇİN.
       </h3>
 
-     <a class="btn" href="https://wa.me/905373261193">
-  WhatsApp'tan Ulaş →
-</a>
+
+      <a
+        class="btn"
+        href="https://wa.me/905373261193"
       >
         WhatsApp'tan Ulaş →
       </a>
 
     </div>
 
+
     <div class="cl">
 
-      <div class="ci">
-        <span>Merkez Ofis</span>
-        <b>Düzce / Türkiye</b>
-      </div>
 
       <div class="ci">
-  <span>Telefon</span>
-  <b>+90 537 326 11 93</b>
-</div>
+
+        <span>
+          Merkez Ofis
+        </span>
+
+        <b>
+          Düzce / Türkiye
+        </b>
+
       </div>
 
-      <div class="ci">
-        <span>E-posta</span>
-        <b>info@gkgrup.com.tr</b>
-      </div>
 
       <div class="ci">
-        <span>Çalışma</span>
-        <b>Pzt - Cmt / 09:00 - 18:00</b>
+
+        <span>
+          Telefon
+        </span>
+
+        <b>
+          +90 537 326 11 93
+        </b>
+
       </div>
+
+
+      <div class="ci">
+
+        <span>
+          E-posta
+        </span>
+
+        <b>
+          info@gkgrup.com.tr
+        </b>
+
+      </div>
+
+
+      <div class="ci">
+
+        <span>
+          Çalışma
+        </span>
+
+        <b>
+          Pzt - Cmt / 09:00 - 18:00
+        </b>
+
+      </div>
+
 
     </div>
+
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
   © 2026 GÖKMEN KALKAN | GK GRUP — Tüm hakları saklıdır.
+
 </footer>
 
-<script>
 
-<script>
-const defaults = [
-  [
-    "EMLAK",
-    "Düzce / Merkez",
-    "1.250.000 TL",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
-  ],
-  [
-    "CİTYMAX RESİDENCE",
-    "Düzce / Merkez",
-    "Yakında",
-    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
-  ],
-  [
-    "LÜKS KONUT",
-    "Düzce / Bolu",
-    "Yakında",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-  ],
-  [
-    "ARAZİ VE ARSA",
-    "Düzce / İlçeler",
-    "Yakında",
-    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
-  ]
-];
-
-function render() {
-  const grid = document.getElementById("projectGrid");
-
-  if (!grid) return;
-
-  let projects = defaults;
-
-  const saved = localStorage.getItem("gkProjects");
-
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-
-      if (Array.isArray(parsed)) {
-        projects = parsed;
-      }
-    } catch (error) {
-      localStorage.removeItem("gkProjects");
-    }
-  }
-
-  grid.innerHTML = projects.slice(0, 8).map(function (x) {
-    return `
-      <article class="project">
-        <img src="${x[3]}" alt="${x[0]}">
-        <div class="pb">
-          <h4>${x[0]}</h4>
-          <p>${x[1]}</p>
-          <div class="price">${x[2]}</div>
-        </div>
-      </article>
-    `;
-  }).join("");
-}
-
-render();
-</script>
+</body>
+</html>
