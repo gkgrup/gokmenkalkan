@@ -642,104 +642,68 @@ footer{
 
 <script>
 
+<script>
 const defaults = [
-
   [
     "EMLAK",
     "Düzce / Merkez",
-    "İletişime Geçin",
+    "1.250.000 TL",
     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
   ],
-
   [
     "CİTYMAX RESİDENCE",
     "Düzce / Merkez",
-    "İletişime Geçin",
+    "Yakında",
     "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
   ],
-
   [
     "LÜKS KONUT",
     "Düzce / Bolu",
-    "İletişime Geçin",
+    "Yakında",
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
   ],
-
   [
     "ARAZİ VE ARSA",
     "Düzce / İlçeler",
-    "İletişime Geçin",
+    "Yakında",
     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
   ]
-
 ];
 
-function render(){
+function render() {
+  const grid = document.getElementById("projectGrid");
 
-  const saved = localStorage.getItem("gkProjects");
+  if (!grid) return;
 
   let projects = defaults;
 
-  if(saved){
+  const saved = localStorage.getItem("gkProjects");
 
-    try{
+  if (saved) {
+    try {
       const parsed = JSON.parse(saved);
 
-      if(Array.isArray(parsed)){
+      if (Array.isArray(parsed)) {
         projects = parsed;
       }
-
-    }catch(error){
-
-      console.warn("Kayıtlı portföy verisi okunamadı:",error);
-
+    } catch (error) {
       localStorage.removeItem("gkProjects");
-
     }
-
   }
 
-  const grid = document.getElementById("projectGrid");
-
-  if(!grid){
-    return;
-  }
-
-  grid.innerHTML = projects
-    .slice(0,8)
-    .map(function(x){
-
-      return `
-        <article class="project">
-
-          <img
-            src="${x[3]}"
-            alt="${x[0]}"
-          >
-
-          <div class="pb">
-
-            <h4>${x[0]}</h4>
-
-            <p>${x[1]}</p>
-
-            <div class="price">
-              ${x[2]}
-            </div>
-
-          </div>
-
-        </article>
-      `;
-
-    })
-    .join("");
-
+  grid.innerHTML = projects.slice(0, 8).map(function (x) {
+    return `
+      <article class="project">
+        <img src="${x[3]}" alt="${x[0]}">
+        <div class="pb">
+          <h4>${x[0]}</h4>
+          <p>${x[1]}</p>
+          <div class="price">${x[2]}</div>
+        </div>
+      </article>
+    `;
+  }).join("");
 }
 
 render();
-
 </script>
-
-</body>
-</html>
