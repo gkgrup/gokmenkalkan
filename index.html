@@ -6,8 +6,8 @@
 <section class="sec"><div class="ey" style="text-align:center">Neden GK Grup?</div><h3 style="text-align:center">FARK YARATAN DEĞERLERİMİZ</h3><div class="values"><div class="val"><strong>GÜVEN</strong><p>Tüm süreçlerde şeffaflık ve güven ilkesiyle hareket ederiz.</p></div><div class="val"><strong>DENEYİM</strong><p>Sektörlerimizi bilen, çözüm odaklı yaklaşımla ilerleriz.</p></div><div class="val"><strong>KAZANÇ ODAKLI</strong><p>Yatırımları büyüten ve değer yaratan stratejiler geliştiririz.</p></div><div class="val"><strong>SÜRDÜRÜLEBİLİR</strong><p>Bugünü değil, geleceği inşa eden adımlar atarız.</p></div></div></section>
 <section class="sec" id="portfoyler"><div class="ph"><div><div class="ey">Projeler</div><h3>GELECEĞE İZ BIRAKAN PROJELER</h3></div><a class="btn" href="#portfoyler">Tüm Portföyler →</a></div><div class="projects" id="projectGrid"></div></section>
 <section class="sec contact" id="iletisim"><div class="cg"><div><div class="ey">İletişime Geçin</div><h3>YATIRIM FIRSATLARI VE İŞ BİRLİKLERİ İÇİN BİZİMLE İLETİŞİME GEÇİN.</h3><a class="btn" href="https://wa.me/905551234567">WhatsApp'tan Ulaş →</a></div><div class="cl"><div class="ci"><span>Merkez Ofis</span><b>Düzce / Türkiye</b></div><div class="ci"><span>Telefon</span><b>+90 555 123 45 67</b></div><div class="ci"><span>E-posta</span><b>info@gkgrup.com.tr</b></div><div class="ci"><span>Çalışma</span><b>Pzt - Cmt / 09:00 - 18:00</b></div></div></div></section><footer>© 2026 GÖKMEN KALKAN | GK GRUP — Tüm hakları saklıdır.</footer><script>
+<script>
 const defaults = [
-  [const defaults = [
   [
     "EMLAK",
     "Düzce / Merkez",
@@ -33,13 +33,10 @@ const defaults = [
     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
   ]
 ];
-  ]
-];
 
 function render() {
   const saved = localStorage.getItem("gkProjects");
   const projects = saved ? JSON.parse(saved) : defaults;
-
   const grid = document.getElementById("projectGrid");
 
   if (!grid) return;
@@ -56,22 +53,7 @@ function render() {
       </article>
     `;
   }).join("");
-}render();  grid.innerHTML = projects.slice(0, 8).map(function(x) {
-    return `
-      <article class="project">
-        <img src="${x[3]}" alt="${x[0]}">
-        <div class="pb">
-          <h4>${x[0]}</h4>
-          <p>${x[1]}</p>
-          <div class="price">${x[2]}</div>
-        </div>
-      </article>
-    `;
-  }).join("");
 }
-
-render();
-</script>
 
 render();
 </script>
